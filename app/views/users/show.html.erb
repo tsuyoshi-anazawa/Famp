@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+
+      <div class="field-row">
+        <div class="col-md-12">
+          <p class="text-center">
+            <%= attachment_image_tag @user, :profile_image, size: "180x180", format: "png", fallback: "no_image.png",class:"profile_image" %>
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 center">
+          <h2>
+      	    <%= @user.name %>
+          </h2>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 mypage-introduction center">
+          <%= @user.introduction %>
+        </div>
+      </div>
+
+      <% if @user.id == current_user.id %>
+        <div class="row">
+          <div class="center">
+            <%= link_to edit_user_path(@user.id) do %>
+              <button class="btn btn-success">プロフィール編集</button>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>

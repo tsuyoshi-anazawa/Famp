@@ -15,3 +15,33 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.profile_image {
+	border-radius: 100px;
+}
+
+.data {
+	border: 2px solid #000000;
+}
+
+.field-row {
+	margin-top: 10px;
+}
+
+.actions-row {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.container {
+	margin-top: 50px;
+}
+
+.center {
+	text-align: center;
+}
+
+.mypage-introduction {
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
