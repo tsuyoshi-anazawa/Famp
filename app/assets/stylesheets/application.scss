@@ -15,3 +15,24 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.profile_image {
+	border-radius: 100px;
+}
+
+.profile-data {
+	border: 2px solid #000000;
+}
+
+.field-row {
+	margin-top: 10px;
+}
+
+.actions-row {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.space {
+	margin-bottom: 50px;
+}
