@@ -1,2 +1,44 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<h1>ユーザ情報変更</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+
+  <%= form_for(@user) do |f| %>
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <div>
+          <label>ユーザ名</label><br>
+          <%= f.text_field :name,class:"col-md-5" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <div>
+          <label>プロフィール画像</label>
+          <%= f.attachment_field :profile_image %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <div>
+          <label>自己紹介</label><br>
+          <%= f.text_area :introduction,class:"col-md-12" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <p class="text-center"><%= f.submit "保存" %></p>
+      </div>
+    </div>
+  <% end %>
+
+    </div>
+  </div>
+</div>
