@@ -1,22 +1,12 @@
-<div class="space">
-</div>
-
 <div class="container">
   <div class="row">
-    <div class="profile-data col-md-6 col-md-offset-3">
+    <div class="data col-md-6 col-md-offset-3">
 
         <%= form_for(@user) do |f| %>
           <div class="field-row">
             <div class="col-md-8 col-md-offset-2">
-              <label>ユーザ名</label>
+              <label>プロフィール画像</label>
             </div>
-              <%= f.text_field :name,class:"col-md-6 col-md-offset-3" %>
-          </div>
-
-          <div class="field-row">
-            <div class="col-md-8 col-md-offset-2 field-row">
-      	      <label>プロフィール画像</label>
-      	    </div>
               <p class="text-center">
                 <%= attachment_image_tag @user, :profile_image, size: "150x150", format: "png", fallback: "no_image.png",class:"profile_image" %>
               </p>
@@ -28,14 +18,21 @@
             </div>
           </div>
 
-          <div class="field-row">
-            <div class="col-md-8 col-md-offset-2">
+          <div class="field">
+            <div class="col-md-8 col-md-offset-2 field-row">
+              <label>ユーザ名</label>
+            </div>
+              <%= f.text_field :name,class:"col-md-6 col-md-offset-3" %>
+          </div>
+
+          <div class="field">
+            <div class="col-md-8 col-md-offset-2 field-row">
               <label>自己紹介</label>
             </div>
               <%= f.text_area :introduction,class:"col-md-8 col-md-offset-2" %>
           </div>
 
-          <div class="actions-row">
+          <div class="actions">
             <%= f.submit "変更",class:"btn btn-info col-md-2 col-md-offset-5 actions-row" %>
           </div>
         <% end %>
