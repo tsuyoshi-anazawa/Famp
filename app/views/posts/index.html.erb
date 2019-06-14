@@ -1,15 +1,70 @@
-<table>
-  <% @posts.each do |post| %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
 
-    <tbody>
-      <tr>
-        <td>
-        </td>
-        <td>
-          <%= post.title %>
-        </td>
-      </tr>
-    </tbody>
+      <% @posts.each do |post| %>
 
-  <% end %>
-</table>
+        <div class="row">
+          <div class="data-index col-md-6 col-md-offset-3">
+            <div class="post-data">
+              <%= attachment_image_tag post.user, :profile_image, size:"80x80", format: "png", fallback: "no_image.png",class:"profile_image" %>
+              <span>
+                <%= link_to post_path(post.id) do %>
+                  <%= post.title %>
+                <% end %>
+              </span>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+
+    <div class="col-md-3">
+      <% if user_signed_in? %>
+        <div class="row">
+          <div class="col-md-12 center">
+            <%= attachment_image_tag current_user, :profile_image, size:"120x120", format: "png", fallback: "no_image.png",class:"profile_image" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th>
+                    ユーザ名:
+                  </th>
+                  <th>
+                    <%= current_user.name %>
+                  </th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1 center">
+            <%= link_to user_path(current_user.id) do %>
+              <button class="btn btn-primary">マイページ</button>
+            <% end %>
+          </div>
+        </div>
+
+      <% else %>
+        <div class="row">
+          <div class="col-md-12">
+            <p class="text-center">アカウント登録しませんか？</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 center">
+            <%= link_to new_user_registration_path do %>
+              <button class="btn btn-warning">アカウント作成</button>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

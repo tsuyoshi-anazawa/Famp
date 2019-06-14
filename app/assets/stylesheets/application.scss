@@ -21,11 +21,11 @@
 }
 
 .data {
-	border: 2px solid #000000;
+	border: 1px solid #000000;
 }
 
 .field-row {
-	margin-top: 10px;
+	margin-top: 20px;
 }
 
 .actions-row {
@@ -44,4 +44,26 @@
 .mypage-introduction {
 	margin-top: 10px;
 	margin-bottom: 20px;
+}
+
+.post-newtitle {
+	margin-bottom: 20px;
+}
+
+.post-username {
+	text-align: text-bottom;
+}
+
+.post-content {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.post-data {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.data-index {
+	border: 2px solid #000000;
 }

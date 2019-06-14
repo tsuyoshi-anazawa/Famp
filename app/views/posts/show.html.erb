@@ -1,21 +1,42 @@
-<h1>投稿詳細</h1>
-
 <div class="container">
+
   <div class="row">
-    <div class="col-xs-12">
+    <div class="data col-md-6 col-md-offset-3">
+      <div class="field-row">
+        <%= attachment_image_tag @post.user, :profile_image, size:"60x60", format: "png", fallback: "no_image.png",class:"profile_image" %>
+        <span>
+          <%= link_to user_path(@post.user.id) do %>
+            <%= @post.user.name %>
+          <% end %>
+        </span>
+      </div>
 
       <div>
         <h3><%= @post.title %></h3>
-
-        <p><%= @post.content %></p>
       </div>
 
-      <% if @post.user.id == current_user.id %>
-        <%= link_to post_path(@post),method: :delete,"data-confirm" => "この投稿を削除しますか？" do %>
-          <button class="btn btn-danger">削除</button>
-        <% end %>
-      <% end %>
-
+      <div class="post-content">
+        <p><%= @post.content %></p>
+      </div>
     </div>
   </div>
+
+  <% if @post.user.id == current_user.id %>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="field-row center">
+          <%= link_to post_path(@post),method: :delete,"data-confirm" => "この投稿を削除しますか？" do %>
+            <button class="btn btn-danger">削除</button>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="row field-row">
+    <div class="col-md-8 col-md-offset-2">
+      <h2>コメント</h2>
+    </div>
+  </div>
+
 </div>
