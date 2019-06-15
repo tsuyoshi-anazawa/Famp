@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-9">
+    <div class="col-md-9 index-data">
 
       <% @posts.each do |post| %>
 
@@ -28,7 +28,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-10 col-md-offset-1">
+          <div class="col-md-10 col-md-offset-1 field-row">
             <table class="table">
               <tbody>
                 <tr>
@@ -44,7 +44,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-10 col-md-offset-1 center">
+          <div class="col-md-12 center">
             <%= link_to user_path(current_user.id) do %>
               <button class="btn btn-primary">マイページ</button>
             <% end %>
@@ -52,16 +52,18 @@
         </div>
 
       <% else %>
-        <div class="row">
-          <div class="col-md-12">
-            <p class="text-center">アカウント登録しませんか？</p>
+        <div class="data">
+          <div class="row">
+            <div class="col-md-12">
+              <p class="text-center">ようこそ、ゲストさん</p>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 center">
-            <%= link_to new_user_registration_path do %>
-              <button class="btn btn-warning">アカウント作成</button>
-            <% end %>
+          <div class="row">
+            <div class="col-md-12 center">
+              <%= link_to new_user_registration_path do %>
+                <button class="btn btn-warning">アカウント作成</button>
+              <% end %>
+            </div>
           </div>
         </div>
       <% end %>
