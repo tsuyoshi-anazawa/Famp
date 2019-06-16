@@ -10,6 +10,70 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div id="header-logo">
+              <%= link_to posts_path do %>
+                <%= image_tag "/images/Famplogo.png",class:"logo" %>
+              <% end %>
+            </div>
+
+            <div class="collapse navbar-collapse">
+              <ul class="nav navbar-nav navbar-right">
+                <% if user_signed_in? && current_user.admin? %>
+                  <p>管理者用ヘッダー</p>
+
+                <% elsif user_signed_in? %>
+                  <li>
+                    <%= link_to posts_path do %>
+                      <span class="glyphicon glyphicon-home nav-text" aria-hidden="true"></span>
+                      <span class="nav-text">TOP</span>
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to posts_path do %>
+                      <span class="glyphicon glyphicon-list-alt nav-text" aria-hidden="true"></span>
+                      <span class="nav-text">投稿一覧</span>
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to new_post_path do %>
+                      <span class="glyphicon glyphicon-edit nav-text" aria-hidden="true"></span>
+                      <span class="nav-text">新規投稿</span>
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to destroy_user_session_path,:method => :delete,"data-confirm" => "ログアウトしますか？" do %>
+                      <span class="glyphicon glyphicon-log-out nav-text" aria-hidden="true"></span>
+                      <span class="nav-text">ログアウト</span>
+                    <% end %>
+                  </li>
+
+                <% else %>
+                  <li>
+                    <span>TOP</span>
+                  </li>
+                  <li>
+                    <%= link_to posts_path do %>
+                      <span class="glyphicon glyphicon-list-alt nav-text" aria-hidden="true"></span>
+                      <span class="nav-text">投稿一覧</span>
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to new_user_session_path do %>
+                      <span class="glyphicon glyphicon-log-in nav-text" aria-hidden="true"></span>
+                      <span class="nav-text">ログイン</span>
+                    <% end %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>
