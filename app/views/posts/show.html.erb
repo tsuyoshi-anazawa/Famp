@@ -39,4 +39,47 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2 data">
+      <% @post.post_comments.each do |comment| %>
+        <table class="table">
+          <tbody>
+            <tr>
+              <td>
+                <%= attachment_image_tag comment.user, :profile_image, size:"30x30", format: "png", fallback: "no_image.png",class:"profile_image" %>
+                <span>
+                  <%= link_to user_path(comment.user.id) do %>
+                    <%= comment.user.name %>
+                  <% end %>
+                </span>
+              </td>
+              <td>
+                <%= comment.comment %>
+              </td>
+              <td>
+                <%= comment.created_at.strftime('%Y/%m/%d') %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <%= form_for [@post,@post_comment] do |f| %>
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3 center comment-box">
+            <%= f.text_area :comment,rows:'5',cols:'70' %>
+          </div>
+        </div>
+        <div class="row field-row">
+          <div class="center">
+            <%= f.submit "送信",class:"btn btn-default" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
