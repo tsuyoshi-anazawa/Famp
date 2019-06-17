@@ -3,6 +3,9 @@
   <div class="row">
     <div class="data col-md-6 col-md-offset-3">
       <div class="field-row">
+        投稿日：<span><%= @post.created_at.strftime('%Y/%m/%d') %></span>
+      </div>
+      <div class="field-row">
         <%= attachment_image_tag @post.user, :profile_image, size:"60x60", format: "png", fallback: "no_image.png",class:"profile_image" %>
         <span>
           <%= link_to user_path(@post.user.id) do %>
@@ -34,18 +37,18 @@
   <% end %>
 
   <div class="row field-row">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-10 col-md-offset-1">
       <h2>コメント<span class="comment-count">（<%= @post.post_comments.count %>件）</span></h2>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-md-8 col-md-offset-2 data">
+    <div class="col-md-10 col-md-offset-1 data">
       <% @post.post_comments.each do |comment| %>
         <table class="table">
           <tbody>
             <tr>
-              <td>
+              <td class="col-md-3">
                 <%= attachment_image_tag comment.user, :profile_image, size:"30x30", format: "png", fallback: "no_image.png",class:"profile_image" %>
                 <span>
                   <%= link_to user_path(comment.user.id) do %>
@@ -53,11 +56,20 @@
                   <% end %>
                 </span>
               </td>
-              <td>
+              <td class="col-md-6">
                 <%= comment.comment %>
               </td>
-              <td>
+              <td class="col-md-2">
                 <%= comment.created_at.strftime('%Y/%m/%d') %>
+              </td>
+              <td class="col-md-1">
+                <% if comment.user_id == current_user.id %>
+                  <span>
+                    <%= link_to post_post_comment_path(@post,comment.id),method: :delete,"data-confirm" => "このコメントを削除しますか？" do %>
+                      <button class="btn btn-danger">削除</button>
+                    <% end %>
+                  </span>
+                <% end %>
               </td>
             </tr>
           </tbody>
