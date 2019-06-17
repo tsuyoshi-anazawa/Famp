@@ -5,14 +5,25 @@
       <% @posts.each do |post| %>
 
         <div class="row">
-          <div class="data-index col-md-6 col-md-offset-3">
-            <div class="post-data">
+          <div class="data-index col-md-10 col-md-offset-1">
+            <div class="col-md-2 post-data">
               <%= attachment_image_tag post.user, :profile_image, size:"80x80", format: "png", fallback: "no_image.png",class:"profile_image" %>
-              <span>
+            </div>
+            <div class="col-md-5 post-title-data">
+              <span class="post-title-text">
                 <%= link_to post_path(post.id) do %>
                   <%= post.title %>
                 <% end %>
               </span>
+            </div>
+            <div class="col-md-2 post-day">
+              <%= link_to post_path(post.id) do %>
+                <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                <span><%= post.post_comments.count %>件</span>
+              <% end %>
+            </div>
+            <div class="col-md-3 post-day">
+              <%= post.created_at.strftime('%Y/%m/%d') %>
             </div>
           </div>
         </div>
