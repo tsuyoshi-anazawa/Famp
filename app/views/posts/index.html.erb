@@ -33,44 +33,48 @@
 
     <div class="col-md-3">
       <% if user_signed_in? %>
-        <div class="row">
-          <div class="col-md-12 center">
+        <div class="row user-info">
+          <div class="col-md-10 col-md-offset-1 center">
             <%= attachment_image_tag current_user, :profile_image, size:"120x120", format: "png", fallback: "no_image.png",class:"profile_image" %>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-10 col-md-offset-1 field-row">
-            <table class="table">
-              <tbody>
-                <tr>
-                  <th>
-                    ユーザ名:
-                  </th>
-                  <th>
-                    <%= current_user.name %>
-                  </th>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 center">
-            <%= link_to user_path(current_user.id) do %>
-              <button class="btn btn-primary">マイページ</button>
-            <% end %>
-          </div>
-        </div>
-
-      <% else %>
-        <div class="data">
           <div class="row">
-            <div class="col-md-12">
-              <p class="text-center">ようこそ、ゲストさん</p>
+            <div class="col-md-10 col-md-offset-1 field-row">
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <th class="col-md-5">
+                      ユーザ名:
+                    </th>
+                    <th class="col-md-7">
+                      <%= current_user.name %>
+                    </th>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
           <div class="row">
             <div class="col-md-12 center">
+              <%= link_to user_path(current_user.id) do %>
+                <button class="btn btn-primary">マイページ</button>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+      <% else %>
+        <div class="user-info col-md-12">
+          <div class="row">
+            <div class="col-md-12">
+              <p class="text-center">
+                ＜未登録の方＞<br>
+                アカウント登録してFampを<br>
+                使ってみましょう！
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 center field-row">
               <%= link_to new_user_registration_path do %>
                 <button class="btn btn-warning">アカウント作成</button>
               <% end %>
