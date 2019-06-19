@@ -36,4 +36,84 @@
 
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-md-8 field-row">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 field-row center">
+          <h3>あなたの投稿</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 data">
+          <table class="table field-row">
+            <% @posts.each do |post| %>
+              <tbody>
+                <tr>
+                  <td class="col-md-8 center">
+                    <%= link_to post_path(post.id) do %>
+                      <%= post.title %>
+                    <% end %>
+                  </td>
+                  <td class="col-md-2">
+                    <%= link_to post_path(post.id) do %>
+                      <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                      <%= post.post_comments.count %>件
+                    <% end %>
+                  </td>
+                  <td class="col-md-2">
+                    <%= post.created_at.strftime('%Y/%m/%d') %>
+                  </td>
+                </tr>
+              </tbody>
+            <% end %>
+          </table>
+          <div class="row">
+            <div class="col-md-10 col-md-offset-1 center">
+              <%= paginate @posts %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 field-row">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 field-row center">
+          <h3>お気に入り</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 data">
+          <table class="table field-row">
+            <% @favorites.each do |favorite| %>
+              <tbody>
+                <tr>
+                  <td class="col-md-8 center">
+                    <%= link_to post_path(favorite.post.id) do %>
+                      <%= favorite.post.title %>
+                    <% end %>
+                  </td>
+                  <td class="col-md-2">
+                    <%= link_to post_path(favorite.post.id) do %>
+                      <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                      <%= favorite.post.post_comments.count %>件
+                    <% end %>
+                  </td>
+                  <td class="col-md-2">
+                    <%= favorite.post.created_at.strftime('%Y/%m/%d') %>
+                  </td>
+                </tr>
+              </tbody>
+            <% end %>
+          </table>
+          <div class="row">
+            <div class="col-md-10 col-md-offset-1 center">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
