@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
     def index
-      @posts = Post.page(params[:page]).reverse_order.per(5)
+      @search = Post.ransack(params[:q])
+
+      @results =@search.result.page(params[:page]).reverse_order.per(5)
     end
 
     def new

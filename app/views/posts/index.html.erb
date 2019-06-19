@@ -1,37 +1,57 @@
 <div class="container">
   <div class="row">
+    <div class="col-md-12">
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <%= search_form_for @search do |f| %>
+
+            <%= f.search_field :title_cont, placeholder: "楽器名を入力" %>
+
+            <%= f.submit "検索" %>
+          <% end %>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="row">
     <div class="col-md-9 index-data">
+      <% @results.each do |post| %>
+        <% if @results.nil? %>
+          <div>
+            該当する投稿が見つかりませんでした。
+          </div>
+        <% else %>
 
-      <% @posts.each do |post| %>
-
-        <div class="row">
-          <div class="data-index col-md-10 col-md-offset-1">
-            <div class="col-md-2 post-data">
-              <%= attachment_image_tag post.user, :profile_image, size:"80x80", format: "png", fallback: "no_image.png",class:"profile_image" %>
-            </div>
-            <div class="col-md-5 post-title-data">
-              <span class="post-title-text">
+          <div class="row">
+            <div class="data-index col-md-10 col-md-offset-1">
+              <div class="col-md-2 post-data">
+                <%= attachment_image_tag post.user, :profile_image, size:"80x80", format: "png", fallback: "no_image.png",class:"profile_image" %>
+              </div>
+              <div class="col-md-5 post-title-data">
+                <span class="post-title-text">
+                  <%= link_to post_path(post.id) do %>
+                    <%= post.title %>
+                  <% end %>
+                </span>
+              </div>
+              <div class="col-md-2 post-day">
                 <%= link_to post_path(post.id) do %>
-                  <%= post.title %>
+                  <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                  <span><%= post.post_comments.count %>件</span>
                 <% end %>
-              </span>
-            </div>
-            <div class="col-md-2 post-day">
-              <%= link_to post_path(post.id) do %>
-                <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
-                <span><%= post.post_comments.count %>件</span>
-              <% end %>
-            </div>
-            <div class="col-md-3 post-day">
-              <%= post.created_at.strftime('%Y/%m/%d') %>
+              </div>
+              <div class="col-md-3 post-day">
+                <%= post.created_at.strftime('%Y/%m/%d') %>
+              </div>
             </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
 
       <div class="row">
         <div class="col-md-10 col-md-offset-1 center">
-          <%= paginate @posts %>
+          <%= paginate @results %>
         </div>
       </div>
 
