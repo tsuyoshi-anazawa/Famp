@@ -50,7 +50,10 @@
             <% @posts.each do |post| %>
               <tbody>
                 <tr>
-                  <td class="col-md-8 center">
+                  <td class="col-md-1 center">
+                    <%= attachment_image_tag post.user, :profile_image, size: "40x40", format: "png", fallback: "no_image.png",class:"profile_image" %>
+                  </td>
+                  <td class="col-md-7 center">
                     <%= link_to post_path(post.id) do %>
                       <%= post.title %>
                     <% end %>
@@ -85,31 +88,39 @@
       </div>
       <div class="row">
         <div class="col-md-12 data">
-          <table class="table field-row">
+          <% if @favorites.empty? %>
+            <div class="fiele-row">
+              <h5 class="center">
+                お気に入りの投稿はありません
+              </h5>
+            </div>
+          <% else %>
             <% @favorites.each do |favorite| %>
-              <tbody>
-                <tr>
-                  <td class="col-md-1 center">
-                    <%= attachment_image_tag favorite.post.user, :profile_image, size: "40x40", format: "png", fallback: "no_image.png",class:"profile_image" %>
-                  </td>
-                  <td class="col-md-7 center">
-                    <%= link_to post_path(favorite.post.id) do %>
-                      <%= favorite.post.title %>
-                    <% end %>
-                  </td>
-                  <td class="col-md-2">
-                    <%= link_to post_path(favorite.post.id) do %>
-                      <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
-                      <%= favorite.post.post_comments.count %>件
-                    <% end %>
-                  </td>
-                  <td class="col-md-2">
-                    <%= favorite.post.created_at.strftime('%Y/%m/%d') %>
-                  </td>
-                </tr>
-              </tbody>
+              <table class="table field-row">
+                <tbody>
+                  <tr>
+                    <td class="col-md-1 center">
+                      <%= attachment_image_tag favorite.post.user, :profile_image, size: "40x40", format: "png", fallback: "no_image.png",class:"profile_image" %>
+                    </td>
+                    <td class="col-md-7 center">
+                      <%= link_to post_path(favorite.post.id) do %>
+                        <%= favorite.post.title %>
+                      <% end %>
+                    </td>
+                    <td class="col-md-2">
+                      <%= link_to post_path(favorite.post.id) do %>
+                        <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                        <%= favorite.post.post_comments.count %>件
+                      <% end %>
+                    </td>
+                    <td class="col-md-2">
+                      <%= favorite.post.created_at.strftime('%Y/%m/%d') %>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             <% end %>
-          </table>
+          <% end %>
           <div class="row">
             <div class="col-md-10 col-md-offset-1 center">
             </div>
