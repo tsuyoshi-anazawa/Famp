@@ -95,8 +95,8 @@
               </h5>
             </div>
           <% else %>
-            <% @favorites.each do |favorite| %>
-              <table class="table field-row">
+            <table class="table field-row">
+              <% @favorites.each do |favorite| %>
                 <tbody>
                   <tr>
                     <td class="col-md-1 center">
@@ -118,8 +118,8 @@
                     </td>
                   </tr>
                 </tbody>
-              </table>
-            <% end %>
+              <% end %>
+            </table>
           <% end %>
           <div class="row">
             <div class="col-md-10 col-md-offset-1 center">
