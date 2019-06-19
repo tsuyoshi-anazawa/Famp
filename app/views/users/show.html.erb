@@ -38,7 +38,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-8 field-row">
+    <div class="col-md-6 field-row">
       <div class="row">
         <div class="col-md-6 col-md-offset-3 field-row center">
           <h3>あなたの投稿</h3>
@@ -77,7 +77,7 @@
       </div>
     </div>
 
-    <div class="col-md-4 field-row">
+    <div class="col-md-6 field-row">
       <div class="row">
         <div class="col-md-6 col-md-offset-3 field-row center">
           <h3>お気に入り</h3>
@@ -89,7 +89,10 @@
             <% @favorites.each do |favorite| %>
               <tbody>
                 <tr>
-                  <td class="col-md-8 center">
+                  <td class="col-md-1 center">
+                    <%= attachment_image_tag favorite.post.user, :profile_image, size: "40x40", format: "png", fallback: "no_image.png",class:"profile_image" %>
+                  </td>
+                  <td class="col-md-7 center">
                     <%= link_to post_path(favorite.post.id) do %>
                       <%= favorite.post.title %>
                     <% end %>
