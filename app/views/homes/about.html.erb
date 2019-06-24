@@ -1,2 +1,36 @@
-<h1>Homes#about</h1>
-<p>Find me in app/views/homes/about.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 center about-title">
+      <h1>Fampとは</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <p class="center">
+        Fampはあなたのやっている楽器や始めようと思っている楽器と同じ
+      </p>
+      <p class="center">
+        楽器をやっている人を探すことができます。
+      </p>
+      <p class="center">
+        自分で投稿して募集したり、気になる投稿を探してみましょう。
+      </p>
+      <p class="center">
+        コメントやダイレクトメッセージを送ることもできます。
+      </p>
+      <p class="center">
+        Fampで知り合った人と一緒に楽器を練習するもよし、バンドを組んで演奏するもよし、
+      </p>
+      <p class="center">
+        あなたの楽器仲間を探してみましょう。
+      </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 center">
+      <%= link_to "探しに行く",posts_path,class:"btn btn-default" %>
+    </div>
+  </div>
+</div>
