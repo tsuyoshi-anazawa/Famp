@@ -1,2 +1,58 @@
-<h1>Homes#home</h1>
-<p>Find me in app/views/homes/home.html.erb</p>
+<div class="row">
+  <div class="col-md-12 home-title">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+      	<div class="home-content center">
+          <h1>Fampへようこそ！！</h1>
+          <p>
+            Fampでは様々な楽器をやっている人を<br>
+            探して、友達になることができます。同<br>
+            じ楽器を楽しむ人同士で仲良くなるもよし<br>
+            新しく始めたい楽器を教えてもらうのもよし<br>
+            楽器を通して新たな出会いを探してみましょう！
+          </p>
+          <%= link_to "はじめる",posts_path,class:"btn btn-default" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 home-about">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+      	<div class="about-content center">
+          <h2>Fampについて</h2>
+          <%= link_to "Fampとは？",homes_about_path,class:"btn btn-default" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 home-login">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+      	<div class="login-content center">
+          <h3>アカウントをお持ちの方</h3>
+          <%= link_to "ログインする",new_user_session_path,class:"btn btn-default" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 home-signup">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+      	<div class="signup-content center">
+          <h3>アカウントを新しく作成</h3>
+          <%= link_to "新規登録する",new_user_registration_path,class:"btn btn-default" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
