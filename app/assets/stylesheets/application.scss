@@ -17,8 +17,12 @@
 @import "bootstrap";
 
 body {
-    padding-top: 70px;
+    padding-top: 50px;
     background-color: #EEEEEE;
+}
+
+.c-container {
+	padding-top: 50px;
 }
 
 .profile_image {
@@ -186,4 +190,24 @@ body {
 .about-title {
 	padding-top: 80px;
 	padding-bottom: 50px;
+}
+
+#image-container{
+	height: 400px;
+}
+
+.image1 {
+	background-image: url(Famp1.jpg);
+}
+
+.image2 {
+	background-image: url(Famp2.jpg);
+}
+
+.image3 {
+	background-image: url(Famp3.jpg);
+}
+
+.image4 {
+	background-image: url(Famp4.jpg);
 }
