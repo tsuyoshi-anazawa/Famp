@@ -5,8 +5,14 @@ class PostCommentsController < ApplicationController
         comment = PostComment.new(post_comment_params)
         comment.user_id = current_user.id
         comment.post_id = post.id
+      if
         comment.save
         redirect_to post_path(post.id)
+      else
+        @post = post
+        @post_comment = PostComment.new
+        render 'posts/show'
+      end
 	end
 
 	def destroy
