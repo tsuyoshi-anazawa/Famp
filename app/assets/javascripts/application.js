@@ -126,3 +126,14 @@ $(function() {
 		$('.nav-text8').css({'color' : '#FFFFFF'});
 	});
 });
+
+$(function() {
+
+	$('.nav-text9').mouseover(function() {
+		$('.nav-text9').css({'color' : '#808080'});
+	});
+
+	$('.nav-text9').mouseout(function() {
+		$('.nav-text9').css({'color' : '#FFFFFF'});
+	});
+});
