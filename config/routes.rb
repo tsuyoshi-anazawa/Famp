@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  root 'posts#index'
+  root 'homes#home'
+  get 'homes/about'
   devise_for :users
   resources :posts, only: [:new,:create,:index,:show,:destroy] do
   	resource :favorites, only:[:create,:destroy]
