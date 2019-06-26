@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  before_action :correct_user, only: [:edit, :update]
+
   def index
     @users = User.page(params[:page]).reverse_order.per(20)
   end
@@ -45,6 +48,13 @@ class UsersController < ApplicationController
   private
     def user_params
     	params.require(:user).permit(:name,:profile_image,:introduction)
+    end
+
+    def correct_user
+      user = User.find(params[:id])
+      if current_user.id != user.id
+        redirect_to posts_path
+      end
     end
 
 end
