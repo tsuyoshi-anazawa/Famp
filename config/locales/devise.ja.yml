@@ -9,6 +9,7 @@ ja:
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "パスワード確認"
+        introduction: "自己紹介"
 
   devise:
     confirmations:
