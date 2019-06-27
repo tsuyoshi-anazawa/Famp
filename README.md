@@ -1,24 +1,42 @@
-# README
+# Famp
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 概要
 
-Things you may want to cover:
+Fampは楽器を始めたい人が同じ楽器をやっている練習仲間を探したり、バンドなどに必要な楽器をやっている人を探したりして  
+コミュニケーションが取れるアプリケーションです。  
 
-* Ruby version
+## 機能
 
-* System dependencies
+* 会員登録後、プロフィール編集からプロフィール画像や自己紹介文を設定できます。
 
-* Configuration
+* 自分でお目当ての楽器をやっている人を募集する投稿を作成できます。
 
-* Database creation
+* 投稿一覧から検索機能などを使って気になる投稿を探し出し、コメントやお気に入り登録をすることができます。
 
-* Database initialization
+* DM機能で、1対1でのコミュニケーションが可能です。
 
-* How to run the test suite
+## 言語
 
-* Services (job queues, cache servers, search engines, etc.)
+* Ruby 2.5.5
 
-* Deployment instructions
+* Rails 5.2.3
 
-* ...
+## Gem
+
+* devise
+
+* bootstrap-sass 3.3.6
+
+* jquery-rails
+
+* refile
+
+* refile-mini_magick
+
+* kaminari
+
+* ransack
+
+* rails-i18n 5.1
+
+* pry-byebug
