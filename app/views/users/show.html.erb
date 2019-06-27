@@ -1,0 +1,151 @@
+<div class="container c-container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+
+      <div class="field-row">
+        <div class="col-md-12">
+          <p class="text-center">
+            <%= attachment_image_tag @user, :profile_image, size: "180x180", format: "png", fallback: "no_image.png",class:"profile_image" %>
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 center">
+          <h2>
+      	    <%= @user.name %>
+          </h2>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 mypage-introduction center">
+          <%= @user.introduction %>
+        </div>
+      </div>
+
+      <% if @user.id == current_user.id %>
+
+        <div class="row">
+          <div class="center">
+            <%= link_to edit_user_path(@user.id) do %>
+              <button class="btn btn-success">プロフィール編集</button>
+            <% end %>
+          </div>
+        </div>
+
+      <% else %>
+        <div class="row">
+          <div class="center">
+            <% if @isRoom == true %>
+              <p><a href="/rooms/<%= @roomId %>" class="btn btn-primary">ダイレクトメッセージ</a></p>
+            <% else %>
+              <%= form_for @room do |f| %>
+                <%= fields_for @entry do |e| %>
+                  <%= e.hidden_field :user_id, :value=> @user.id %>
+                <% end %>
+                <%= f.submit "ダイレクトメッセージ",class:"btn btn-primary" %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+
+      <% end %>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 field-row">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 field-row center">
+          <h3><%= @user.name %>の投稿</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 data">
+          <table class="table field-row">
+            <% @posts.each do |post| %>
+              <tbody>
+                <tr>
+                  <td class="col-md-1 center">
+                    <%= attachment_image_tag post.user, :profile_image, size: "40x40", format: "png", fallback: "no_image.png",class:"profile_image" %>
+                  </td>
+                  <td class="col-md-7 center">
+                    <%= link_to post_path(post.id) do %>
+                      <%= post.title %>
+                    <% end %>
+                  </td>
+                  <td class="col-md-2">
+                    <%= link_to post_path(post.id) do %>
+                      <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                      <%= post.post_comments.count %>件
+                    <% end %>
+                  </td>
+                  <td class="col-md-2">
+                    <%= post.created_at.strftime('%Y/%m/%d') %>
+                  </td>
+                </tr>
+              </tbody>
+            <% end %>
+          </table>
+          <div class="row">
+            <div class="col-md-10 col-md-offset-1 center">
+              <%= paginate @posts %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 field-row">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 field-row center">
+          <h3>お気に入りの投稿</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 data">
+          <% if @favorites.empty? %>
+            <div class="fiele-row">
+              <h5 class="center">
+                お気に入りの投稿はありません
+              </h5>
+            </div>
+          <% else %>
+            <table class="table field-row">
+              <% @favorites.each do |favorite| %>
+                <tbody>
+                  <tr>
+                    <td class="col-md-1 center">
+                      <%= attachment_image_tag favorite.post.user, :profile_image, size: "40x40", format: "png", fallback: "no_image.png",class:"profile_image" %>
+                    </td>
+                    <td class="col-md-7 center">
+                      <%= link_to post_path(favorite.post.id) do %>
+                        <%= favorite.post.title %>
+                      <% end %>
+                    </td>
+                    <td class="col-md-2">
+                      <%= link_to post_path(favorite.post.id) do %>
+                        <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                        <%= favorite.post.post_comments.count %>件
+                      <% end %>
+                    </td>
+                    <td class="col-md-2">
+                      <%= favorite.post.created_at.strftime('%Y/%m/%d') %>
+                    </td>
+                  </tr>
+                </tbody>
+              <% end %>
+            </table>
+          <% end %>
+          <div class="row">
+            <div class="col-md-10 col-md-offset-1 center">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

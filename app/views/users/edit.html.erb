@@ -1,0 +1,52 @@
+<% if @user.errors.any? %>
+  <div class="error">
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="container c-container">
+  <div class="row">
+    <div class="data col-md-6 col-md-offset-3">
+
+        <%= form_for(@user) do |f| %>
+          <div class="field-row">
+            <div class="col-md-8 col-md-offset-2">
+              <label>プロフィール画像</label>
+            </div>
+              <p class="text-center">
+                <%= attachment_image_tag @user, :profile_image, size: "150x150", format: "png", fallback: "no_image.png",class:"profile_image" %>
+              </p>
+          </div>
+
+          <div class="field-row">
+            <div class="col-md-4 col-md-offset-4">
+              <%= f.attachment_field :profile_image %>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="col-md-8 col-md-offset-2 field-row">
+              <label>ユーザ名</label>
+            </div>
+              <%= f.text_field :name,class:"col-md-6 col-md-offset-3" %>
+          </div>
+
+          <div class="field">
+            <div class="col-md-8 col-md-offset-2 field-row">
+              <label>自己紹介</label>
+            </div>
+              <%= f.text_area :introduction,class:"col-md-8 col-md-offset-2" %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "変更",class:"btn btn-info col-md-2 col-md-offset-5 actions-row" %>
+          </div>
+        <% end %>
+
+    </div>
+  </div>
+</div>
