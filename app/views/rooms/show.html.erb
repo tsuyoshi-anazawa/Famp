@@ -22,7 +22,7 @@
       <% if @messages.present? %>
         <% @messages.each do |m| %>
           <strong><%= m.message %></strong>
-          <small><strong><a href="/users/<%= m.user_id %>"><%= attachment_image_tag m.user, :profile_image, size: "30x30", format: "png", fallback: "no_image.png",class:"profile_image" %><%= m.user.name %></a></strong></small>
+          <small><strong><a href="/users/<%= m.user_id %>"><%= attachment_image_tag m.user, :profile_image, size: "30x30", format: "png", fallback: "/images/no_image.png",class:"profile_image" %><%= m.user.name %></a></strong></small>
     <hr>
         <% end %>
       <% else %>

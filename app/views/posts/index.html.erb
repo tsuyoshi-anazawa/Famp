@@ -26,7 +26,7 @@
           <div class="row">
             <div class="data-index col-md-10 col-md-offset-1">
               <div class="col-md-2 post-data">
-                <%= attachment_image_tag post.user, :profile_image, size:"80x80", format: "png", fallback: "no_image.png",class:"profile_image" %>
+                <%= attachment_image_tag post.user, :profile_image, size:"80x80", format: "png", fallback: "/images/no_image.png",class:"profile_image" %>
               </div>
               <div class="col-md-5 post-title-data">
                 <span class="post-title-text">
@@ -61,7 +61,7 @@
       <% if user_signed_in? %>
         <div class="row user-info">
           <div class="col-md-10 col-md-offset-1 center">
-            <%= attachment_image_tag current_user, :profile_image, size:"120x120", format: "png", fallback: "no_image.png",class:"profile_image" %>
+            <%= attachment_image_tag current_user, :profile_image, size:"120x120", format: "png", fallback: "/images/no_image.png",class:"profile_image" %>
           </div>
           <div class="row">
             <div class="col-md-10 col-md-offset-1 field-row">
