@@ -18,7 +18,7 @@
               <label>プロフィール画像</label>
             </div>
               <p class="text-center">
-                <%= attachment_image_tag @user, :profile_image, size: "150x150", format: "png", fallback: "no_image.png",class:"profile_image" %>
+                <%= attachment_image_tag @user, :profile_image, size: "150x150", format: "png", fallback: "/images/no_image.png",class:"profile_image" %>
               </p>
           </div>
 
